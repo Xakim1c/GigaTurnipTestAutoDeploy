@@ -27,4 +27,8 @@ jobs:
         run: pipenv install --dev
 
       - name: Run tests
-        run: pipenv run python manage.py test
+        env:
+          API_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY= }}  # Use your secret here
+        run: |
+          pipenv run python manage.py test  # Replace with your tests execution command
+          # You can access the secret using the environment variable API_KEY
