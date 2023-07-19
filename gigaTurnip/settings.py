@@ -92,19 +92,19 @@ WSGI_APPLICATION = 'gigaTurnip.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-
     'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'gigaturnip',
-            'USER': 'postgres',
-            'PASSWORD': 'postgres',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+
+    # 'default': {
+    #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #         'NAME': 'gigaturnip',
+    #         'USER': 'postgres',
+    #         'PASSWORD': 'postgres',
+    #         'HOST': 'localhost',
+    #         'PORT': '5432',
+    #     }
 
     # 'default': {
     #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -116,23 +116,23 @@ DATABASES = {
     #     }
 }
 
-if os.getenv("LOCAL_DOCKER_DB", None) == "yes":
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": "postgres",
-            "USER": "postgres",
-            "PASSWORD": "postgres",
-            "HOST": "db",  # set in docker-compose.yml
-            "PORT": 5432,  # default postgres port
-        }
-    }
-
-if os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
-    DATABASES = {"default": ast.literal_eval(os.getenv('DB'))}
-
-    DATABASES["default"]["HOST"] = "127.0.0.1"
-    DATABASES["default"]["PORT"] = 3306
+# if os.getenv("LOCAL_DOCKER_DB", None) == "yes":
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.postgresql",
+#             "NAME": "postgres",
+#             "USER": "postgres",
+#             "PASSWORD": "postgres",
+#             "HOST": "db",  # set in docker-compose.yml
+#             "PORT": 5432,  # default postgres port
+#         }
+#     }
+#
+# if os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
+#     DATABASES = {"default": ast.literal_eval(os.getenv('DB'))}
+#
+#     DATABASES["default"]["HOST"] = "127.0.0.1"
+#     DATABASES["default"]["PORT"] = 3306
 
 
 # Password validation
